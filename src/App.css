@@ -1,0 +1,35 @@
+#topBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#side {
+  display: flex;
+  flex-direction: column;
+}
+
+#TodayWeather {
+  background-color: aqua;
+  padding: 2%;
+  text-align: center;
+}
+
+#temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+#weatherDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
