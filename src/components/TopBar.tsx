@@ -1,8 +1,8 @@
 export default function TopBar() {
     return (
         <div id="topBar">
-            <input placeholder="city name" />
-            <h1>Weather View</h1>
+            <input id="searchBar" placeholder="city name" />
+            <h1 id="logo">Weather View</h1>
         </div>
     )
 }

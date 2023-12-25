@@ -1,8 +1,10 @@
 export default function TodayWeather() {
     return (
         <div id="TodayWeather">
-            <h1>City</h1>
-            <h3>Date</h3>
+            <div id="todayWeatherTop">
+                <h1>City</h1>
+                <h3>Date</h3>
+            </div>
             <div id="temperature">
                 <div>Icon</div>
                 <h2>17</h2>
