@@ -1,13 +1,16 @@
+import { TiWeatherCloudy } from "react-icons/ti";
+
 export default function TodayWeather() {
     return (
         <div id="TodayWeather">
             <div id="todayWeatherTop">
-                <h1>City</h1>
-                <h3>Date</h3>
+                <h1>Casablanca</h1>
+                <h3>Sun. 24 Dec 2023</h3>
             </div>
             <div id="temperature">
-                <div>Icon</div>
-                <h2>17</h2>
+                <TiWeatherCloudy id="weatherIcon" style={{color: 'black', fontSize: '200px'}}/>
+                {/* <div id="weatherIcon">Icon</div> */}
+                <h2 id="weatherTemperature">17°</h2>
             </div>
             <div id="weatherDetails">
                 <div>
