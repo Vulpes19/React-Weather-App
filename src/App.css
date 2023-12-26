@@ -108,5 +108,6 @@ p {
 }
 
 #DayForecast {
+  width: 100%;
   text-align: center;
 }

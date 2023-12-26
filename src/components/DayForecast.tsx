@@ -17,12 +17,12 @@ interface DayProps {
 
 export default function DayForecast({day, weather, humidity}: DayProps) {
     return (
-        <div id="DayForecast">
+        <button id="DayForecast">
             <h3>{day}</h3>
             {weather === WEATHER.SUNNY && <TiWeatherSunny style={{fontSize: '80px'}} />}
             {weather === WEATHER.CLOUDY && <TiWeatherCloudy style={{fontSize: '80px'}} />}
             {weather === WEATHER.RAINY && <TiWeatherDownpour style={{fontSize: '80px'}} />}
             <h3>{humidity}%</h3>
-        </div>
+        </button>
     )
 };
