@@ -21,14 +21,14 @@ app.get("/", async (req: Request, res: Response) => {
     {
         console.log(process.env.API_URL)
         console.log(process.env.API_KEY)
-        const res = await axios.post(process.env.API_URL + '/current.json', {},{
+        const res = await axios.post(process.env.API_URL + '/current.json', null,{
             params: {
                 key: process.env.API_KEY,
                 q: req.query.city,
                 days: 7,
             }
-        }).then((d) => {
-            console.log(d.data)
+        }).then((response) => {
+            console.log(response.data)
         }).catch((e) => {
             console.log(e.message);
         })
