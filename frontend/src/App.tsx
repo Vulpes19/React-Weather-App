@@ -2,7 +2,7 @@ import TempCharts from "./components/TempCharts";
 import TodayWeather from "./components/TodayWeather";
 import TopBar from "./components/TopBar";
 import WeekForecast from "./components/WeekForecast";
-import './App.css'
+import './style/App.css'
 
 function App() {
   return (

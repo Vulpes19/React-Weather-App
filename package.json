@@ -1,0 +1,14 @@
+{
+  "name": "react-weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm run start",
+    "all": "npm run backend && npm run frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

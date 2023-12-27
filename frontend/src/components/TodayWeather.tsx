@@ -1,4 +1,5 @@
 import { TiWeatherCloudy } from "react-icons/ti";
+import '../style/TodayWeather.css'
 
 export default function TodayWeather() {
     return (

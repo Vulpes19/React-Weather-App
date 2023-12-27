@@ -1,0 +1,14 @@
+#weekForecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: var(--color1);
+    height: 25vh;
+    border-radius: 10px;
+  }
+
+#DayForecast {
+width: 100%;
+text-align: center;
+border: none;
+}

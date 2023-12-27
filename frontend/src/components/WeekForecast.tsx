@@ -1,4 +1,5 @@
 import DayForecast, { WEATHER } from "./DayForecast";
+import '../style/WeekForecast.css'
 
 export default function WeekForecast() {
     return (

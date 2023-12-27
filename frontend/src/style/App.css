@@ -1,0 +1,43 @@
+@import url("https://fonts.google.com/specimen/Poppins?query=Poppi");
+
+:root {
+  --font: 'Poppins';
+  --color1: #D3D4D9;
+  --color2: #0E6BA8;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font);
+  font-weight: bold;
+}
+
+p {
+  font-family: var(--font);
+  font-style: normal;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding: 4px; */
+}
+
+#side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70vw;
+  margin-right: 2%;
+}
+
+#tempChart {
+  background-color: var(--color1);
+  height: 60vh;
+  border-radius: 10px;
+}
