@@ -21,20 +21,20 @@ app.get("/", async (req: Request, res: Response) => {
     {
         console.log(process.env.API_URL)
         console.log(process.env.API_KEY)
-        const res = await axios.post(process.env.API_URL + '/current.json', null,{
-            params: {
-                key: process.env.API_KEY,
-                q: req.query.city,
-                days: 7,
-            }
-        }).then((response) => {
-            console.log(response.data)
-        }).catch((e) => {
-            console.log(e.message);
-        })
-        // console.log(res);
+        try {
+            const apiResponse = await axios.post(process.env.API_URL + '/forecast.json', {},{
+                params: {
+                    key: process.env.API_KEY,
+                    q: req.query.city,
+                    days: 7,
+                }
+            })
+            res.send(apiResponse.data);
+        }
+        catch(error) {
+            res.status(500).send(error);
+        }
     }
-    res.send('hello');
 });
 
 app.listen((port), () => {
