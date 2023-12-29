@@ -2,47 +2,50 @@ import { useQuery } from "react-query";
 import "../style/TopBar.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { WeatherData, useWeatherData } from "../stores/weatherStore";
 
-interface WeatherData {
-  city: string;
-  temp: number;
-}
+// interface WeatherData {
+//   city: string;
+//   temp: number;
+// }
 
-export const fetchWeatherData = async (searchQuery: string) => {
-  const res = await axios.get("http://localhost:3000/", {
-    params: {
-      city: searchQuery === "" ? "London" : searchQuery,
-    },
-  });
-  return res;
-};
+// export const fetchWeatherData = async (searchQuery: string) => {
+//   const res = await axios.get("http://localhost:3000/", {
+//     params: {
+//       city: searchQuery === "" ? "London" : searchQuery,
+//     },
+//   });
+//   return res;
+// };
 
-export const useWeatherData = (searchQuery: string, searchButton: boolean) => {
-  return useQuery(['weather', searchQuery], () => fetchWeatherData(searchQuery), {
-    enabled: searchButton
-  });
-};
+// export const useWeatherData = (searchQuery: string, searchButton: boolean) => {
+//   return useQuery(['weather', searchQuery], () => fetchWeatherData(searchQuery), {
+//     enabled: searchButton
+//   });
+// };
 
 export default function TopBar() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchButton, setSearchButton] = useState<boolean>(true);
   const [data, setData] = useState<WeatherData | null>(null);
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
+  const weatherData = useWeatherData();
   // const { data, isLoading, isError } = useWeatherData('', searchButton);
 
   // setSearchButton(false)
   useEffect(() => {
-    if (searchButton && searchQuery === '') {
+    if (searchButton) {
       axios.get("http://localhost:3000/", {
         params: {
           city: searchQuery === "" ? "London" : searchQuery,
         },
       }).then((response) => {
         setData(response.data);
+        weatherData.setWeather(response.data);
         setLoading(false);
       }).catch((error) => {
-        setError(error);
+        setError(true);
       });
       setSearchButton(false);
     }
@@ -50,6 +53,7 @@ export default function TopBar() {
 
   const handleSearch = () => {
     setSearchButton(true);
+    setLoading(true);
   };
 
   if (isLoading) {

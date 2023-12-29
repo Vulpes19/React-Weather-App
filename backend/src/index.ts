@@ -32,7 +32,7 @@ app.get("/", async (req: Request, res: Response) => {
             res.send(apiResponse.data);
         }
         catch(error) {
-            res.status(500).send(error);
+            res.status(404).send('not found');
         }
     }
 });
