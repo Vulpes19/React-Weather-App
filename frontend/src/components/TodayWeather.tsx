@@ -6,15 +6,19 @@ import { useCallback } from "react";
 export default function TodayWeather() {
     const weatherData = useWeatherData();
 
-    const getFullDate = useCallback(() => {
+    const getFullDate = () => {
+        let day = 'not set';
         if (weatherData.dayData)
-            const day = new Date(weatherData.dayData.date).toLocaleDateString('en-US', {weekday: "long"});
-    }, [weatherData.dayData?.date])
+        {
+            day = new Date(weatherData.dayData?.date).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
+        }
+        return (day);
+    };    
     return (
         <div id="TodayWeather">
             <div id="todayWeatherTop">
                 <h1>{weatherData.weatherData?.location.name}</h1>
-                <h3>Sun. 24 Dec 2023</h3>
+                <h3>{getFullDate()}</h3>
             </div>
             <div id="temperature">
                 <TiWeatherCloudy id="weatherIcon" style={{color: 'black', fontSize: '200px'}}/>
