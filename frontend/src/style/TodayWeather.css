@@ -1,5 +1,4 @@
 #TodayWeather {
-    position: relative;
     background-color: var(--color1);
     display: flex;
     flex-direction: column;
@@ -19,15 +18,9 @@
   }
   
   #weatherIcon {
-    position: absolute;
-    left: 10%;
-    top: 30%;
   }
   
   #weatherTemperature {
-    position: absolute;
-    right: 20%;
-    top: 30%;
     font-size: 80px;
   }
   

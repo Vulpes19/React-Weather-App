@@ -1,5 +1,4 @@
 import create from 'zustand';
-import { WEATHER } from '../components/DayForecast';
 
 interface Condition {
     text: string;
@@ -14,15 +13,21 @@ interface WeatherDay {
     humidity: number;
     is_day: boolean;
     uv: number;
+    possible_rain: number;
     condition: Condition
 }
 
 interface DayForecast {
+    daily_chance_of_rain: number,
     avgtemp_c: number,
     avgtemp_f: number,
-    avgis_km: number,
-    avgis_miles: number,
+    avgvis_km: number,
+    avgvis_miles: number,
     avghumidity: number,
+    maxtemp_c: number,
+    maxtemp_f: number,
+    mintemp_c: number,
+    mintemp_f: number,
     is_day: boolean,
     uv: number
     condition: Condition,
@@ -59,7 +64,7 @@ export const useWeatherData = create<WeatherStore>((set, get) => ({
 
     setWeather(weather) {
         set({ weatherData: weather });
-        set({ dayData: weather.current })
+        this.setDay(weather.forecast.forecastday[0].date);
     },
     setDay(day) {
         const week = get().weatherData?.forecast.forecastday;
@@ -71,11 +76,12 @@ export const useWeatherData = create<WeatherStore>((set, get) => ({
                             date: week[i].date,
                             temp_c: week[i].day.avgtemp_c,
                             temp_f: week[i].day.avgtemp_f,
-                            wind_kph: week[i].day.avgis_km,
-                            wind_mph: week[i].day.avgis_miles,
+                            wind_kph: week[i].day.avgvis_km,
+                            wind_mph: week[i].day.avgvis_miles,
                             humidity: week[i].day.avghumidity,
                             is_day: true,
                             uv: week[i].day.uv,
+                            possible_rain: week[i].day.daily_chance_of_rain,
                             condition: week[i].day.condition
                         }
                     })

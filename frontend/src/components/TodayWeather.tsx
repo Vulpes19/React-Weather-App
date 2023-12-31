@@ -1,13 +1,13 @@
 import { TiWeatherCloudy } from "react-icons/ti";
 import '../style/TodayWeather.css'
 import { useWeatherData } from "../stores/weatherStore";
-import { useCallback } from "react";
 
 export default function TodayWeather() {
     const weatherData = useWeatherData();
 
+    console.log({day: weatherData.dayData})
     const getFullDate = () => {
-        let day = 'not set';
+        let day = 'invalid date';
         if (weatherData.dayData)
         {
             day = new Date(weatherData.dayData?.date).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
@@ -27,12 +27,12 @@ export default function TodayWeather() {
             </div>
             <div id="weatherDetails">
                 <div>
-                    <h3>Humidity</h3>
-                    <p>{weatherData.dayData?.humidity}%</p>
+                    <h3>Humidity</h3><p>{weatherData.dayData?.humidity}%</p>
+                    <h3>Possible rain</h3><p>{weatherData.dayData?.possible_rain}%</p>
                 </div>
                 <div>
-                    <h3>Wind speed</h3>
-                    <p>{weatherData.dayData?.wind_kph}</p>
+                    <h3>Wind speed</h3><p>{weatherData.dayData?.wind_kph}</p>
+                    <h3>uv</h3><p>{weatherData.dayData?.uv}</p>
                 </div>
             </div>
         </div>
