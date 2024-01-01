@@ -32,6 +32,9 @@ export default function TempCharts() {
         // responsive: true,
         scales: {
             y: {
+                gridLines: {
+                    display: false
+                },
                 beginAtZero: false,
                 min: -40,
                 max: 50

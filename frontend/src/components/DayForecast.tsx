@@ -2,11 +2,13 @@
 import { TiWeatherCloudy } from "react-icons/ti";
 import { TiWeatherDownpour } from "react-icons/ti";
 // import { TiWeatherPartlySunny } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
 import { TiWeatherSunny } from "react-icons/ti";
-import { useWeatherData } from "../stores/weatherStore";
 import { TiWeatherShower } from "react-icons/ti";
+import { useWeatherData } from "../stores/weatherStore";
+import { getWeatherIcon } from "../tools/weatherIcon";
 
-enum WEATHER {
+export enum WEATHER {
     NONE,
     SUNNY,
     CLOUDY,
@@ -24,38 +26,22 @@ interface DayProps {
     humidity: number
 };
 
-export default function DayForecast({date, day, weather, humidity}: DayProps) {
+export default function DayForecast({ date, day, weather, humidity }: DayProps) {
 
     const weatherData = useWeatherData();
     const handleDayChange = () => {
         weatherData.setDay(date);
     }
-    let weatherIcon: WEATHER = WEATHER.NONE;
 
-    const getWeatherIcon = () => {
-        if (weather.toLocaleLowerCase().includes('sunny'))
-            weatherIcon = WEATHER.SUNNY;
-        else if (weather.toLocaleLowerCase().includes('overcast') || 
-                    weather.toLocaleLowerCase().includes('cloudy'))
-            weatherIcon = WEATHER.CLOUDY;
-        else if (weather === 'Moderate rain' || weather === 'Heavy rain')
-            weatherIcon = WEATHER.RAINY;
-        else if (weather.toLocaleLowerCase().includes('patchy') || 
-            weather.toLocaleLowerCase().includes('shower') || 
-            weather.toLocaleLowerCase().includes('light'))
-            weatherIcon = WEATHER.SHOWER;
-    }
+    let weatherIcon: WEATHER = getWeatherIcon(weather);
     return (
         <button id="DayForecast" onClick={handleDayChange}>
             <h3>{day}</h3>
-            {weatherIcon === WEATHER.SUNNY && <TiWeatherSunny style={{fontSize: '80px'}} />}
-            {(weather.toLocaleLowerCase().includes('overcast') ||
-             weather.toLocaleLowerCase().includes('cloudy')) && <TiWeatherCloudy style={{fontSize: '80px'}} />}
-            {(weather === 'Moderate rain' || 
-             weather === '') && <TiWeatherDownpour style={{fontSize: '80px'}} />}
-            {(weather.toLocaleLowerCase().includes('patchy') || 
-             weather.toLocaleLowerCase().includes('shower') || 
-             weather.toLocaleLowerCase().includes('light') ) && <TiWeatherShower style={{fontSize: '80px'}} />}
+            {weatherIcon === WEATHER.SUNNY && <TiWeatherSunny style={{ fontSize: '80px' }} />}
+            {weatherIcon === WEATHER.CLOUDY &&  <TiWeatherCloudy style={{ fontSize: '80px' }} />}
+            {weatherIcon === WEATHER.RAINY && <TiWeatherDownpour style={{ fontSize: '80px' }} />}
+            {weatherIcon === WEATHER.SHOWER && <TiWeatherShower style={{ fontSize: '80px' }} />}
+            {weatherIcon === WEATHER.SNOWY && <TiWeatherSnow style={{ fontSize: '80px' }} />}
             <h3>{humidity}%</h3>
         </button>
     )

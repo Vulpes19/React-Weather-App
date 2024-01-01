@@ -1,4 +1,5 @@
 import create from 'zustand';
+import { WEATHER } from '../components/DayForecast';
 
 interface Condition {
     text: string;
@@ -19,6 +20,7 @@ interface WeatherDay {
 
 interface DayForecast {
     daily_chance_of_rain: number,
+    icon: WEATHER,
     avgtemp_c: number,
     avgtemp_f: number,
     avgvis_km: number,

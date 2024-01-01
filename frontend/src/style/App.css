@@ -6,6 +6,16 @@
   --color2: #0E6BA8;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /* font-size: 100%; */
+  vertical-align: baseline;
+  background: transparent;
+}
+
 html {
   height: 100%;
   overflow: hidden;
@@ -37,7 +47,8 @@ p {
 }
 
 #tempChart {
-  background-color: var(--color1);
+  background-color: white;
   height: 60vh;
   border-radius: 10px;
+  box-shadow: 4px 4px 10px gray;
 }

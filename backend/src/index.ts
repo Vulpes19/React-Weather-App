@@ -9,7 +9,7 @@ const app: Express = express();
 const port = process.env.PORT;
 
 const corsOptions = {
-    origin: "http://localhost:5174",
+    origin: "http://localhost:5173",
     methods: 'GET'
 };
 
@@ -37,6 +37,9 @@ app.get("/", async (req: Request, res: Response) => {
     }
 });
 
+app.get("/cities/", async (req: Request, res: Response) => {
+    
+});
 app.listen((port), () => {
     console.log(`listening to port ${port}`);
 })

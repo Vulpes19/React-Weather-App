@@ -2,6 +2,7 @@ import "../style/TopBar.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { WeatherData, useWeatherData } from "../stores/weatherStore";
+import { FaSearch } from "react-icons/fa";
 
 export default function TopBar() {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -62,7 +63,7 @@ export default function TopBar() {
             }}
             value={searchQuery}
           />
-          <button onClick={handleSearch}>search</button>
+          <button id="searchButton" onClick={handleSearch}><FaSearch style={{color: 'black', fontSize: '20px'}}/></button>
         </div>
         <h1 id="logoText">Weather View</h1>
       </nav>

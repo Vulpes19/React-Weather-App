@@ -1,27 +1,37 @@
 import { TiWeatherCloudy } from "react-icons/ti";
 import '../style/TodayWeather.css'
 import { useWeatherData } from "../stores/weatherStore";
+import { getWeatherIcon } from "../tools/weatherIcon";
+import { WEATHER } from "./DayForecast";
+import { TiWeatherDownpour } from "react-icons/ti";
+// import { TiWeatherPartlySunny } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
+import { TiWeatherSunny } from "react-icons/ti";
+import { TiWeatherShower } from "react-icons/ti";
 
 export default function TodayWeather() {
     const weatherData = useWeatherData();
 
-    console.log({day: weatherData.dayData})
     const getFullDate = () => {
         let day = 'invalid date';
         if (weatherData.dayData)
-        {
             day = new Date(weatherData.dayData?.date).toLocaleDateString('en-US', {weekday: "long", year: "numeric", month: "long", day: "numeric"});
-        }
         return (day);
-    };    
+    };
+    let weatherIcon: WEATHER = getWeatherIcon(weatherData.dayData?.condition.text);
     return (
         <div id="TodayWeather">
             <div id="todayWeatherTop">
                 <h1>{weatherData.weatherData?.location.name}</h1>
+                <h2>{weatherData.weatherData?.location.country}</h2>
                 <h3>{getFullDate()}</h3>
             </div>
             <div id="temperature">
-                <TiWeatherCloudy id="weatherIcon" style={{color: 'black', fontSize: '200px'}}/>
+                {weatherIcon === WEATHER.SUNNY && <TiWeatherSunny style={{color: 'black', fontSize: '200px'}} />}
+                {weatherIcon === WEATHER.CLOUDY &&  <TiWeatherCloudy style={{color: 'black', fontSize: '200px'}} />}
+                {weatherIcon === WEATHER.RAINY && <TiWeatherDownpour style={{color: 'black', fontSize: '200px'}} />}
+                {weatherIcon === WEATHER.SHOWER && <TiWeatherShower style={{color: 'black', fontSize: '200px'}} />}
+                {weatherIcon === WEATHER.SNOWY && <TiWeatherSnow style={{color: 'black', fontSize: '200px'}} />}
                 {/* <div id="weatherIcon">Icon</div> */}
                 <h2 id="weatherTemperature">{weatherData.dayData?.temp_c}°</h2>
             </div>

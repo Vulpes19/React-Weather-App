@@ -1,47 +1,48 @@
 #TodayWeather {
-    background-color: var(--color1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 20vw;
-    margin-left: 2%;
-    height: 80vh;
-    padding: 2%;
-    text-align: center;
-    border-radius: 10px;
-  }
-  
-  #temperature {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  #weatherIcon {
-  }
-  
-  #weatherTemperature {
-    font-size: 80px;
-  }
-  
-  #weatherDetails {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 10%;
-  }
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20vw;
+  margin-left: 2%;
+  height: 80vh;
+  padding: 2%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px gray;
+}
 
-  #weekForecast {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: var(--color1);
-    height: 25vh;
-    border-radius: 10px;
-  }
+#temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#weatherIcon {}
+
+#weatherTemperature {
+  font-size: 80px;
+}
+
+#weatherDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10%;
+}
+
+#weekForecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  height: 25vh;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px gray;
+}
 
 #DayForecast {
-width: 100%;
-text-align: center;
-border: none;
+  width: 100%;
+  text-align: center;
+  border: none;
 }
