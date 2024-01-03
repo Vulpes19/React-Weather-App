@@ -11,7 +11,7 @@ export default function TopBar() {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
   const weatherData = useWeatherData();
- 
+
   useEffect(() => {
     if (searchButton) {
       axios.get("http://localhost:3000/", {
@@ -21,7 +21,7 @@ export default function TopBar() {
       }).then((response) => {
         setData(response.data);
         weatherData.setWeather(response.data);
-        console.log({day: weatherData.dayData});
+        console.log({ day: weatherData.dayData });
         setLoading(false);
       }).catch((error) => {
         console.log(error);
@@ -35,6 +35,15 @@ export default function TopBar() {
     setSearchButton(true);
     setLoading(true);
   };
+
+  // useEffect( () => {
+  //   const handleKeyDown = (event) => {
+  //     if (event.key == 'Enter')
+  //       handleSearch();
+  //   }
+  //   addEventListener('keydown', handleKeyDown);
+  //   return () => removeEventListener('keydown', handleKeyDown);
+  // }, []);
 
   if (isLoading) {
     return (
@@ -56,6 +65,7 @@ export default function TopBar() {
       <nav id="topBar">
         <div id="inputSearch">
           <input
+            type="search"
             id="searchBar"
             placeholder="city name"
             onChange={(e) => {
@@ -63,7 +73,7 @@ export default function TopBar() {
             }}
             value={searchQuery}
           />
-          <button id="searchButton" onClick={handleSearch}><FaSearch style={{color: 'black', fontSize: '20px'}}/></button>
+          {/* <button id="searchButton" onClick={handleSearch}><FaSearch style={{ color: 'black', fontSize: '20px' }} /></button> */}
         </div>
         <h1 id="logoText">Weather View</h1>
       </nav>

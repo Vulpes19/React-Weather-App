@@ -12,18 +12,22 @@
   #searchBar {
     background-color: white;
     /* border: white; */
-    border-radius: 10%;
+    border-radius: 10px;
     height: 80%;
-    width: 70%;
+    width: 90%;
   }
   
   #inputSearch {
-    margin-left: 5%;
-    width: 20%;
+    margin-left: 2%;
+    width: 23%;
   }
 
   #searchButton {
     background-color: white;
     padding: 2px;
     border-radius: 10%;
+  }
+
+  #logoText {
+    margin-right: 6%;
   }

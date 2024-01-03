@@ -55,6 +55,7 @@ export interface WeatherData {
 interface WeatherStore {
     weatherData: WeatherData | null;
     dayData: WeatherDay | null;
+    selectedDate: Date | null;
 
     setWeather: (weather: WeatherData) => void,
     setDay: (day: Date) => void,
@@ -63,6 +64,7 @@ interface WeatherStore {
 export const useWeatherData = create<WeatherStore>((set, get) => ({
     weatherData: null,
     dayData: null,
+    selectedDate: null,
 
     setWeather(weather) {
         set({ weatherData: weather });
@@ -73,6 +75,8 @@ export const useWeatherData = create<WeatherStore>((set, get) => ({
         if (week) {
             for (let i = 0; i < week?.length; i++) {
                 if (week[i].date === day)
+                {
+                    set({ selectedDate: week[i].date });
                     set({
                         dayData: {
                             date: week[i].date,
@@ -86,7 +90,8 @@ export const useWeatherData = create<WeatherStore>((set, get) => ({
                             possible_rain: week[i].day.daily_chance_of_rain,
                             condition: week[i].day.condition
                         }
-                    })
+                    });
+                }
             }
         }
     },
