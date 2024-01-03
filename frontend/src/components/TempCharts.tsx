@@ -31,10 +31,11 @@ export default function TempCharts() {
         maintainAspectRatio: false,
         // responsive: true,
         scales: {
+            x: {
+                display: true
+            },
             y: {
-                gridLines: {
-                    display: false
-                },
+                    display: false,
                 beginAtZero: false,
                 min: -40,
                 max: 50

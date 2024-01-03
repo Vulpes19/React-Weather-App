@@ -8,6 +8,8 @@ import { TiWeatherDownpour } from "react-icons/ti";
 import { TiWeatherSnow } from "react-icons/ti";
 import { TiWeatherSunny } from "react-icons/ti";
 import { TiWeatherShower } from "react-icons/ti";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 export default function TodayWeather() {
     const weatherData = useWeatherData();
@@ -21,6 +23,7 @@ export default function TodayWeather() {
     let weatherIcon: WEATHER = getWeatherIcon(weatherData.dayData?.condition.text);
     return (
         <div id="TodayWeather">
+            <ToastContainer/>
             <div id="todayWeatherTop">
                 <h1>{weatherData.weatherData?.location.name}</h1>
                 <h2>{weatherData.weatherData?.location.country}</h2>

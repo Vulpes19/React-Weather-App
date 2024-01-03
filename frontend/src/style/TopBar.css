@@ -14,12 +14,16 @@
     /* border: white; */
     border-radius: 10px;
     height: 80%;
-    width: 90%;
+    width: 100%;
   }
   
   #inputSearch {
     margin-left: 2%;
     width: 23%;
+  }
+
+  input::placeholder {
+    font: italic
   }
 
   #searchButton {
@@ -30,4 +34,13 @@
 
   #logoText {
     margin-right: 6%;
+  }
+
+  #celsius-symbol {
+    size: 5px;
+  }
+
+  #fahrenheit-symbol {
+    size: 5px;
+    
   }

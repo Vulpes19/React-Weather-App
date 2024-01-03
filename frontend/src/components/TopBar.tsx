@@ -2,14 +2,13 @@ import "../style/TopBar.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { WeatherData, useWeatherData } from "../stores/weatherStore";
-import { FaSearch } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function TopBar() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchButton, setSearchButton] = useState<boolean>(true);
   const [data, setData] = useState<WeatherData | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
-  const [isError, setError] = useState<boolean>(false);
   const weatherData = useWeatherData();
 
   useEffect(() => {
@@ -25,8 +24,10 @@ export default function TopBar() {
         setLoading(false);
       }).catch((error) => {
         console.log(error);
-        setError(true);
+        setLoading(false);
+        toast.error('city not found');
       });
+      setSearchQuery('');
       setSearchButton(false);
     }
   }, [searchButton])
@@ -36,14 +37,14 @@ export default function TopBar() {
     setLoading(true);
   };
 
-  // useEffect( () => {
-  //   const handleKeyDown = (event) => {
-  //     if (event.key == 'Enter')
-  //       handleSearch();
-  //   }
-  //   addEventListener('keydown', handleKeyDown);
-  //   return () => removeEventListener('keydown', handleKeyDown);
-  // }, []);
+  useEffect( () => {
+    const handleKeyDown = (event) => {
+      if (event.key == 'Enter')
+        handleSearch();
+    }
+    addEventListener('keydown', handleKeyDown);
+    return () => removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   if (isLoading) {
     return (
@@ -52,15 +53,8 @@ export default function TopBar() {
       </nav>
     )
   }
-  else if (isError) {
-    return (
-      <nav id="topBar">
-        <h3>error</h3>
-      </nav>
-    )
-  }
   else {
-    console.log(data)
+    // console.log(data)
     return (
       <nav id="topBar">
         <div id="inputSearch">
@@ -75,6 +69,10 @@ export default function TopBar() {
           />
           {/* <button id="searchButton" onClick={handleSearch}><FaSearch style={{ color: 'black', fontSize: '20px' }} /></button> */}
         </div>
+        {/* <div id="tempScale">
+          <button id="celsiusButton" ><img id="celsius-symbol" src="assets/celsius-symbol.svg"/></button>
+          <button id="celsiusButton"><img id="fahrenheit-symbol" src="assets/fahrenheit-symbol.svg"/></button>
+        </div> */}
         <h1 id="logoText">Weather View</h1>
       </nav>
     );
