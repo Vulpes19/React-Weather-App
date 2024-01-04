@@ -1,7 +1,7 @@
 import "../style/TopBar.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { WeatherData, useWeatherData } from "../stores/weatherStore";
+import { SCALE, WeatherData, useWeatherData } from "../stores/weatherStore";
 import { toast } from "react-toastify";
 
 export default function TopBar() {
@@ -37,7 +37,7 @@ export default function TopBar() {
     setLoading(true);
   };
 
-  useEffect( () => {
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key == 'Enter')
         handleSearch();
@@ -68,11 +68,11 @@ export default function TopBar() {
             value={searchQuery}
           />
           {/* <button id="searchButton" onClick={handleSearch}><FaSearch style={{ color: 'black', fontSize: '20px' }} /></button> */}
+          <div id="tempScale">
+            <button onClick={() => weatherData.setScale(SCALE.CELSIUS)} id="celsiusButton" ><img id="celsius-symbol" src="assets/celsius-symbol.svg" /></button>
+            <button onClick={() => weatherData.setScale(SCALE.FAHRENHEIT)} id="fahrenheitButton"><img id="fahrenheit-symbol" src="assets/fahrenheit-symbol.svg" /></button>
+          </div>
         </div>
-        {/* <div id="tempScale">
-          <button id="celsiusButton" ><img id="celsius-symbol" src="assets/celsius-symbol.svg"/></button>
-          <button id="celsiusButton"><img id="fahrenheit-symbol" src="assets/fahrenheit-symbol.svg"/></button>
-        </div> */}
         <h1 id="logoText">Weather View</h1>
       </nav>
     );

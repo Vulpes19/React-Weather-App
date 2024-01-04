@@ -52,19 +52,26 @@ export interface WeatherData {
     location: Location;
 };
 
+export enum SCALE {
+    CELSIUS,
+    FAHRENHEIT
+};
 interface WeatherStore {
     weatherData: WeatherData | null;
     dayData: WeatherDay | null;
     selectedDate: Date | null;
+    scale: SCALE;
 
     setWeather: (weather: WeatherData) => void,
     setDay: (day: Date) => void,
+    setScale: (scale: SCALE.CELSIUS) => void,
 }
 
 export const useWeatherData = create<WeatherStore>((set, get) => ({
     weatherData: null,
     dayData: null,
     selectedDate: null,
+    scale: SCALE.CELSIUS,
 
     setWeather(weather) {
         set({ weatherData: weather });
@@ -94,5 +101,11 @@ export const useWeatherData = create<WeatherStore>((set, get) => ({
                 }
             }
         }
+    },
+    setScale(scale) {
+        if (scale == get().scale)
+            return;
+        else
+            set({scale: scale});
     },
 }))

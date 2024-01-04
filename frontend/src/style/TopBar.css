@@ -18,6 +18,8 @@
   }
   
   #inputSearch {
+    display: flex;
+    flex-direction: row;
     margin-left: 2%;
     width: 23%;
   }
@@ -36,11 +38,25 @@
     margin-right: 6%;
   }
 
+  #tempScale {
+    display: flex;
+    flex-direction: row;
+  }
+  
   #celsius-symbol {
-    size: 5px;
+    width: 25px;
+    height: 25px;
   }
 
   #fahrenheit-symbol {
-    size: 5px;
-    
+    width: 25px;
+    height: 25px;
+  }
+
+   #celsiusButton {
+    padding: 2px;
+  }
+
+  #fahrenheitButton {
+    padding: 2px;
   }

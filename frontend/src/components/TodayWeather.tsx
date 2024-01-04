@@ -1,6 +1,6 @@
 import { TiWeatherCloudy } from "react-icons/ti";
 import '../style/TodayWeather.css'
-import { useWeatherData } from "../stores/weatherStore";
+import { SCALE, useWeatherData } from "../stores/weatherStore";
 import { getWeatherIcon } from "../tools/weatherIcon";
 import { WEATHER } from "./DayForecast";
 import { TiWeatherDownpour } from "react-icons/ti";
@@ -36,7 +36,8 @@ export default function TodayWeather() {
                 {weatherIcon === WEATHER.SHOWER && <TiWeatherShower style={{color: 'black', fontSize: '200px'}} />}
                 {weatherIcon === WEATHER.SNOWY && <TiWeatherSnow style={{color: 'black', fontSize: '200px'}} />}
                 {/* <div id="weatherIcon">Icon</div> */}
-                <h2 id="weatherTemperature">{weatherData.dayData?.temp_c}°</h2>
+                {weatherData.scale === SCALE.CELSIUS && <h2 id="weatherTemperature">{weatherData.dayData?.temp_c}°</h2>}
+                {weatherData.scale === SCALE.FAHRENHEIT && <h2 id="weatherTemperature">{weatherData.dayData?.temp_f}°</h2>}
             </div>
             <div id="weatherDetails">
                 <div>
